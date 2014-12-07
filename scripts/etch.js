@@ -50,6 +50,7 @@
       'click .etch-ordered-list': 'toggleOrderedList',
       'click .etch-link': 'toggleLink',
       'click .etch-image': 'getImage',
+      'click .etch-html': 'html',
       'click .etch-save': 'save',
       'click .etch-clear-formatting': 'clearFormatting'
     },
@@ -193,6 +194,12 @@
       // call startUploader with callback to handle inserting it once it is uploaded/cropped
       this.startUploader(this.insertImage);
     },
+    
+    html: function(e) {
+    	e.preventDefault();
+	var editableModel = this.model.get('editableModel');
+    	editableModel.trigger('html', this.model.get('editable'));
+    }
         
     startUploader: function(cb) {
       // initialize Image Uploader
